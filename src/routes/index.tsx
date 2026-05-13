@@ -13,9 +13,9 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Aaliyah — Data Analyst & Aspiring Data Scientist" },
-      { name: "description", content: "Premium portfolio of Aaliyah, a hijabi data analyst building dashboards, ML pipelines, and decision intelligence with Power BI, Python, SQL and Microsoft Fabric." },
-      { property: "og:title", content: "Aaliyah — Data Analyst & Aspiring Data Scientist" },
+      { title: "Naaz Mulla — Data Analyst & Aspiring Data Scientist" },
+      { name: "description", content: "Premium portfolio of Naaz Mulla, a hijabi data analyst building dashboards, ML pipelines, and decision intelligence with Power BI, Python, SQL and Microsoft Fabric." },
+      { property: "og:title", content: "Naaz Mulla — Data Analyst & Aspiring Data Scientist" },
       { property: "og:description", content: "Dashboards, ML and BI for modern teams. Available across the GCC." },
     ],
   }),

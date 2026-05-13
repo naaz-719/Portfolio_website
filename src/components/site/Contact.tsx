@@ -52,7 +52,7 @@ export function Contact() {
       </motion.div>
 
       <footer className="mt-20 border-t border-border/60 pt-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Aaliyah · Crafted with care, caffeine, and clean SQL.
+        © {new Date().getFullYear()} Naaz Mulla · Crafted with care, caffeine, and clean SQL.
       </footer>
     </section>
   );

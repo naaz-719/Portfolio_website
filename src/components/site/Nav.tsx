@@ -20,7 +20,7 @@ export function Nav() {
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-accent text-primary-foreground">
             <Sparkles className="h-4 w-4" />
           </span>
-          <span className="text-gradient">Aaliyah.dev</span>
+          <span className="text-gradient">Naaz Mulla</span>
         </a>
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (

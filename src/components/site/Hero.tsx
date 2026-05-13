@@ -55,7 +55,7 @@ export function Hero() {
         </motion.div>
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }}
           className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl lg:text-[5.5rem]">
-          Hi, I'm <span className="text-gradient">Aaliyah</span>
+          Hi, I'm <span className="text-gradient">Naaz Mulla</span>
           <br />
           <span className="text-foreground/90">turning data into</span>
           <br />
@@ -106,7 +106,7 @@ export function Hero() {
             <div className="absolute inset-0 rounded-[2.5rem] glass-strong glow-ring" />
             <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
               <motion.img
-                src={mascot} alt="Aaliyah — hijabi data analyst illustration"
+                src={mascot} alt="Naaz Mulla — hijabi data analyst illustration"
                 className="absolute inset-0 h-full w-full object-cover"
                 animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 draggable={false}
