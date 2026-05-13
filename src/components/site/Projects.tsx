@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { ExternalLink, Code2 } from "lucide-react";
 import { SectionHeader } from "./Section";
 
 const projects = [
@@ -47,7 +47,7 @@ export function Projects() {
               {p.k.map((kk) => <span key={kk} className="rounded-full glass px-2.5 py-1 text-[11px] text-muted-foreground">{kk}</span>)}
             </div>
             <div className="mt-5 flex gap-2">
-              <a href="#" className="inline-flex items-center gap-1.5 rounded-lg glass-strong px-3 py-1.5 text-xs hover:bg-white/10"><Github className="h-3.5 w-3.5" /> Code</a>
+              <a href="#" className="inline-flex items-center gap-1.5 rounded-lg glass-strong px-3 py-1.5 text-xs hover:bg-white/10"><Code2 className="h-3.5 w-3.5" /> Code</a>
               <a href="#" className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-accent px-3 py-1.5 text-xs text-primary-foreground"><ExternalLink className="h-3.5 w-3.5" /> Live</a>
             </div>
           </motion.article>
