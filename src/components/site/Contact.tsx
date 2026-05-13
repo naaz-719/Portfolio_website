@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Send, Linkedin as L0, Twitter as T0 } from "lucide-react";
+import { Mail, Send, Github, Linkedin, Twitter } from "@/components/site/BrandIcons";
 import { SectionHeader } from "./Section";
 
 export function Contact() {
