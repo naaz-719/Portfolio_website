@@ -265,7 +265,7 @@ export function Hero() {
           <FloatChip className="right-[-4%] top-[6%]" delay={0.4} icon={<Brain className="h-4 w-4" />} title="Model AUC" value="0.93" />
           <FloatChip className="left-[-10%] bottom-[18%]" delay={0.8} icon={<Database className="h-4 w-4" />} title="Rows cleaned" value="1.2M" />
           <FloatChip className="right-[-6%] bottom-[10%]" delay={1.2} icon={<Sparkles className="h-4 w-4" />} title="Insights" value="Live" />
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
