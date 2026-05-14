@@ -32,7 +32,12 @@ function Typer() {
 
 export function Hero() {
   const [playIntro, setPlayIntro] = useState(false);
+  const [lite, setLite] = useState(false);
   useEffect(() => {
+    const reduced = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const small = typeof window !== "undefined" && window.matchMedia?.("(max-width: 768px)").matches;
+    setLite(Boolean(reduced || small));
+    if (reduced) return;
     try {
       if (sessionStorage.getItem("naaz_intro_played") === "1") return;
       sessionStorage.setItem("naaz_intro_played", "1");
@@ -43,12 +48,14 @@ export function Hero() {
   }, []);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 18 });
-  const sy = useSpring(my, { stiffness: 60, damping: 18 });
-  const tiltX = useTransform(sy, [-0.5, 0.5], [6, -6]);
-  const tiltY = useTransform(sx, [-0.5, 0.5], [-8, 8]);
-  const px = useTransform(sx, [-0.5, 0.5], [-20, 20]);
-  const py = useTransform(sy, [-0.5, 0.5], [-15, 15]);
+  const sx = useSpring(mx, { stiffness: 50, damping: 22, mass: 0.8 });
+  const sy = useSpring(my, { stiffness: 50, damping: 22, mass: 0.8 });
+  const tiltRange = lite ? 3 : 6;
+  const parallaxRange = lite ? 8 : 20;
+  const tiltX = useTransform(sy, [-0.5, 0.5], [tiltRange, -tiltRange]);
+  const tiltY = useTransform(sx, [-0.5, 0.5], [-tiltRange - 2, tiltRange + 2]);
+  const px = useTransform(sx, [-0.5, 0.5], [-parallaxRange, parallaxRange]);
+  const py = useTransform(sy, [-0.5, 0.5], [-parallaxRange * 0.75, parallaxRange * 0.75]);
 
   return (
     <section id="top"
