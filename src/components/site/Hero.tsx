@@ -1,8 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Download, BarChart3, Database, Brain, Sparkles } from "lucide-react";
-import mascot from "@/assets/hijabi-mascot.png";
-import mascotSide from "@/assets/hijabi-side.png";
+import naazFront from "@/assets/naaz-front.png";
+import naazSide from "@/assets/naaz-side.png";
 
 const roles = ["Data Analyst", "Aspiring Data Scientist", "BI Storyteller", "AI/ML Enthusiast"];
 
@@ -186,7 +186,7 @@ export function Hero() {
                 >
                   {/* Stage 3: micro head tracking via parallax (already on parent), plus tiny scale breath */}
                   <motion.img
-                    src={mascot}
+                    src={naazFront}
                     alt="Naaz Mulla — hijabi data analyst illustration"
                     className="absolute inset-0 h-full w-full object-cover select-none"
                     draggable={false}
@@ -198,7 +198,7 @@ export function Hero() {
                   {/* Intro-only side-pose overlay: slides in from off-screen, rotates toward viewer, cross-fades into front pose */}
                   {playIntro && (
                     <motion.img
-                      src={mascotSide}
+                      src={naazSide}
                       alt=""
                       aria-hidden
                       className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
