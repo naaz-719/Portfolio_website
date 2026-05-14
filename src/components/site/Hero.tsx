@@ -30,6 +30,16 @@ function Typer() {
 }
 
 export function Hero() {
+  const [playIntro] = useState(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      if (sessionStorage.getItem("naaz_intro_played") === "1") return false;
+      sessionStorage.setItem("naaz_intro_played", "1");
+      return true;
+    } catch {
+      return true;
+    }
+  });
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 60, damping: 18 });
@@ -104,8 +114,8 @@ export function Hero() {
           <div className="absolute inset-6 rounded-full bg-gradient-to-tr from-primary/40 via-secondary/30 to-accent/40 blur-3xl animate-glow-pulse" />
           <motion.div style={{ x: px, y: py }} className="absolute inset-0">
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={playIntro ? { opacity: 0, scale: 0.96 } : false}
+              animate={playIntro ? { opacity: 1, scale: 1 } : undefined}
               transition={{ delay: 1.6, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 rounded-[2.5rem] glass-strong glow-ring"
             />
@@ -114,14 +124,14 @@ export function Hero() {
                 src={mascot} alt="Naaz Mulla — hijabi data analyst illustration"
                 className="absolute inset-0 h-full w-full object-cover"
                 draggable={false}
-                initial={{ opacity: 0, x: -180, y: 30, scale: 0.92, filter: "blur(14px)" }}
-                animate={{
+                initial={playIntro ? { opacity: 0, x: -180, y: 30, scale: 0.92, filter: "blur(14px)" } : false}
+                animate={playIntro ? {
                   opacity: [0, 1, 1, 1],
                   x: [-180, -40, 8, 0],
                   y: [30, 10, -2, 0],
                   scale: [0.92, 0.97, 1.005, 1],
                   filter: ["blur(14px)", "blur(4px)", "blur(0px)", "blur(0px)"],
-                }}
+                } : undefined}
                 transition={{
                   duration: 2.2,
                   ease: [0.22, 1, 0.36, 1],
