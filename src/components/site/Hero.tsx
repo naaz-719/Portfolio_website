@@ -110,7 +110,17 @@ export function Hero() {
       {/* Mascot scene */}
       <motion.div style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 1200 }}
         className="relative z-10 mt-16 flex flex-1 items-center justify-center lg:mt-0">
-        <div className="relative aspect-square w-[88vw] max-w-[560px]">
+        <motion.div
+          className="relative aspect-square w-[88vw] max-w-[560px]"
+          initial={playIntro ? { scale: 1.08, y: 18, filter: "brightness(0.85)" } : false}
+          animate={playIntro ? {
+            scale: [1.08, 1.04, 1.005, 1],
+            y: [18, 8, -2, 0],
+            filter: ["brightness(0.85)", "brightness(0.95)", "brightness(1.02)", "brightness(1)"],
+          } : undefined}
+          transition={{ duration: 2.8, times: [0, 0.45, 0.78, 1], ease: [0.22, 1, 0.36, 1] }}
+          style={{ willChange: "transform, filter" }}
+        >
           {/* halo */}
           <div className="absolute inset-6 rounded-full bg-gradient-to-tr from-primary/40 via-secondary/30 to-accent/40 blur-3xl animate-glow-pulse" />
           {/* soft entrance light sweep */}
@@ -255,7 +265,7 @@ export function Hero() {
           <FloatChip className="right-[-4%] top-[6%]" delay={0.4} icon={<Brain className="h-4 w-4" />} title="Model AUC" value="0.93" />
           <FloatChip className="left-[-10%] bottom-[18%]" delay={0.8} icon={<Database className="h-4 w-4" />} title="Rows cleaned" value="1.2M" />
           <FloatChip className="right-[-6%] bottom-[10%]" delay={1.2} icon={<Sparkles className="h-4 w-4" />} title="Insights" value="Live" />
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
