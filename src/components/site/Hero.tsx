@@ -31,16 +31,16 @@ function Typer() {
 }
 
 export function Hero() {
-  const [playIntro] = useState(() => {
-    if (typeof window === "undefined") return false;
+  const [playIntro, setPlayIntro] = useState(false);
+  useEffect(() => {
     try {
-      if (sessionStorage.getItem("naaz_intro_played") === "1") return false;
+      if (sessionStorage.getItem("naaz_intro_played") === "1") return;
       sessionStorage.setItem("naaz_intro_played", "1");
-      return true;
+      setPlayIntro(true);
     } catch {
-      return true;
+      setPlayIntro(true);
     }
-  });
+  }, []);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 60, damping: 18 });
