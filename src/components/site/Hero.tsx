@@ -30,6 +30,16 @@ function Typer() {
 }
 
 export function Hero() {
+  const [playIntro] = useState(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      if (sessionStorage.getItem("naaz_intro_played") === "1") return false;
+      sessionStorage.setItem("naaz_intro_played", "1");
+      return true;
+    } catch {
+      return true;
+    }
+  });
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 60, damping: 18 });
