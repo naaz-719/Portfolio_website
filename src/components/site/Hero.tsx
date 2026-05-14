@@ -1,8 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Download, BarChart3, Database, Brain, Sparkles } from "lucide-react";
-import mascot from "@/assets/hijabi-mascot.png";
-import mascotSide from "@/assets/hijabi-side.png";
+import naazFront from "@/assets/naaz-front.png";
+import naazSide from "@/assets/naaz-side.png";
 
 const roles = ["Data Analyst", "Aspiring Data Scientist", "BI Storyteller", "AI/ML Enthusiast"];
 
