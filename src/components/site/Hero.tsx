@@ -1,8 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Download, BarChart3, Database, Brain, Sparkles } from "lucide-react";
-import naazFront from "@/assets/naaz-front.png";
-import naazSide from "@/assets/naaz-side.png";
+import mascot from "@/assets/hijabi-mascot.png";
 
 const roles = ["Data Analyst", "Aspiring Data Scientist", "BI Storyteller", "AI/ML Enthusiast"];
 
@@ -31,31 +30,14 @@ function Typer() {
 }
 
 export function Hero() {
-  const [playIntro, setPlayIntro] = useState(false);
-  const [lite, setLite] = useState(false);
-  useEffect(() => {
-    const reduced = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    const small = typeof window !== "undefined" && window.matchMedia?.("(max-width: 768px)").matches;
-    setLite(Boolean(reduced || small));
-    if (reduced) return;
-    try {
-      if (sessionStorage.getItem("naaz_intro_played") === "1") return;
-      sessionStorage.setItem("naaz_intro_played", "1");
-      setPlayIntro(true);
-    } catch {
-      setPlayIntro(true);
-    }
-  }, []);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 50, damping: 22, mass: 0.8 });
-  const sy = useSpring(my, { stiffness: 50, damping: 22, mass: 0.8 });
-  const tiltRange = lite ? 3 : 6;
-  const parallaxRange = lite ? 8 : 20;
-  const tiltX = useTransform(sy, [-0.5, 0.5], [tiltRange, -tiltRange]);
-  const tiltY = useTransform(sx, [-0.5, 0.5], [-tiltRange - 2, tiltRange + 2]);
-  const px = useTransform(sx, [-0.5, 0.5], [-parallaxRange, parallaxRange]);
-  const py = useTransform(sy, [-0.5, 0.5], [-parallaxRange * 0.75, parallaxRange * 0.75]);
+  const sx = useSpring(mx, { stiffness: 60, damping: 18 });
+  const sy = useSpring(my, { stiffness: 60, damping: 18 });
+  const tiltX = useTransform(sy, [-0.5, 0.5], [6, -6]);
+  const tiltY = useTransform(sx, [-0.5, 0.5], [-8, 8]);
+  const px = useTransform(sx, [-0.5, 0.5], [-20, 20]);
+  const py = useTransform(sy, [-0.5, 0.5], [-15, 15]);
 
   return (
     <section id="top"
@@ -117,152 +99,24 @@ export function Hero() {
       {/* Mascot scene */}
       <motion.div style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 1200 }}
         className="relative z-10 mt-16 flex flex-1 items-center justify-center lg:mt-0">
-        <motion.div
-          className="relative aspect-square w-[88vw] max-w-[560px]"
-          initial={playIntro ? { scale: 1.08, y: 18, filter: "brightness(0.85)" } : false}
-          animate={playIntro ? {
-            scale: [1.08, 1.04, 1.005, 1],
-            y: [18, 8, -2, 0],
-            filter: ["brightness(0.85)", "brightness(0.95)", "brightness(1.02)", "brightness(1)"],
-          } : undefined}
-          transition={{ duration: 2.8, times: [0, 0.45, 0.78, 1], ease: [0.22, 1, 0.36, 1] }}
-          style={{ willChange: "transform, filter" }}
-        >
+        <div className="relative aspect-square w-[88vw] max-w-[560px]">
           {/* halo */}
           <div className="absolute inset-6 rounded-full bg-gradient-to-tr from-primary/40 via-secondary/30 to-accent/40 blur-3xl animate-glow-pulse" />
-          {/* soft entrance light sweep */}
-          {playIntro && (
-            <motion.div
-              aria-hidden
-              initial={{ opacity: 0, x: "-120%" }}
-              animate={{ opacity: [0, 0.8, 0], x: ["-120%", "20%", "120%"] }}
-              transition={{ duration: 1.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="pointer-events-none absolute inset-0 rounded-[2.5rem] overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(110deg, transparent 35%, color-mix(in oklab, var(--primary) 35%, transparent) 50%, transparent 65%)",
-                mixBlendMode: "screen",
-              }}
-            />
-          )}
           <motion.div style={{ x: px, y: py }} className="absolute inset-0">
-            <motion.div
-              initial={playIntro ? { opacity: 0, scale: 0.94, filter: "blur(8px)" } : false}
-              animate={playIntro ? { opacity: 1, scale: 1, filter: "blur(0px)" } : undefined}
-              transition={{ delay: 0.2, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0 rounded-[2.5rem] glass-strong glow-ring"
-            />
+            <div className="absolute inset-0 rounded-[2.5rem] glass-strong glow-ring" />
             <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
-              {/* Stage 1: cinematic entrance — slide + scale + blur lift */}
-              <motion.div
-                className="absolute inset-0"
-                initial={playIntro ? { opacity: 0, x: -140, y: 24, scale: 0.9, rotate: -2, filter: "blur(16px)" } : false}
-                animate={playIntro ? {
-                  opacity: [0, 1, 1, 1],
-                  x: [-140, -28, 6, 0],
-                  y: [24, 8, -2, 0],
-                  scale: [0.9, 0.98, 1.01, 1],
-                  rotate: [-2, -0.6, 0.2, 0],
-                  filter: ["blur(16px)", "blur(4px)", "blur(0px)", "blur(0px)"],
-                } : undefined}
-                transition={{
-                  duration: 2.4,
-                  ease: [0.22, 1, 0.36, 1],
-                  times: [0, 0.5, 0.82, 1],
-                }}
-                style={{ willChange: "transform, opacity, filter" }}
-              >
-                {/* Stage 2: settled idle — gentle breathing + soft shoulder sway */}
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{ y: [0, -3, 0, -2, 0], rotate: [0, 0.25, 0, -0.2, 0] }}
-                  transition={{
-                    duration: 6.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: playIntro ? 2.6 : 0,
-                  }}
-                  style={{ transformOrigin: "50% 80%" }}
-                >
-                  {/* Stage 3: micro head tracking via parallax (already on parent), plus tiny scale breath */}
-                  <motion.img
-                    src={naazFront}
-                    alt="Naaz Mulla — hijabi data analyst illustration"
-                    className="absolute inset-0 h-full w-full object-cover select-none"
-                    draggable={false}
-                    animate={{ scale: [1, 1.006, 1] }}
-                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                    loading="eager"
-                    decoding="async"
-                  />
-                  {/* Intro-only side-pose overlay: slides in from off-screen, rotates toward viewer, cross-fades into front pose */}
-                  {playIntro && (
-                    <motion.img
-                      src={naazSide}
-                      alt=""
-                      aria-hidden
-                      className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
-                      draggable={false}
-                      initial={{ opacity: 0, x: "-55%", scale: 1.04, rotateY: -28, filter: "blur(10px)" }}
-                      animate={{
-                        opacity: [0, 1, 1, 0.4, 0],
-                        x: ["-55%", "-12%", "0%", "0%", "0%"],
-                        scale: [1.04, 1.01, 1, 1, 1],
-                        rotateY: [-28, -10, -2, 0, 0],
-                        filter: ["blur(10px)", "blur(2px)", "blur(0px)", "blur(0px)", "blur(0px)"],
-                      }}
-                      transition={{ duration: 2.6, times: [0, 0.35, 0.6, 0.82, 1], ease: [0.22, 1, 0.36, 1] }}
-                      style={{ willChange: "opacity, transform, filter", transformPerspective: 1000, transformOrigin: "60% 50%" }}
-                    />
-                  )}
-                </motion.div>
-              </motion.div>
-
-              {/* Soft hijab cloth shimmer (subtle highlight drifting) */}
-              <motion.div
-                aria-hidden
-                className="pointer-events-none absolute inset-0"
-                animate={{ opacity: [0.0, 0.35, 0.0], x: [-10, 10, -10] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                style={{
-                  background:
-                    "radial-gradient(60% 30% at 35% 25%, color-mix(in oklab, var(--primary) 28%, transparent), transparent 70%)",
-                  mixBlendMode: "screen",
-                }}
+              <motion.img
+                src={mascot} alt="Naaz Mulla — hijabi data analyst illustration"
+                className="absolute inset-0 h-full w-full object-cover"
+                animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                draggable={false}
               />
-
-              {/* Natural blink — quick shutter near the eyes */}
+              {/* eye blink overlay (subtle) */}
               <motion.div
-                aria-hidden
-                className="pointer-events-none absolute left-[30%] right-[30%] top-[33%] h-[3%] rounded-full"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, color-mix(in oklab, var(--background) 70%, transparent), transparent)",
-                  transformOrigin: "center",
-                  filter: "blur(1px)",
-                }}
-                animate={{ scaleY: [0, 0, 1, 0, 0, 0, 1, 0, 0] }}
-                transition={{
-                  duration: 7,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  times: [0, 0.32, 0.34, 0.36, 0.7, 0.74, 0.76, 0.78, 1],
-                  delay: playIntro ? 3 : 1.2,
-                }}
-              />
-
-              {/* Subtle typing pulse — faint glow over laptop area */}
-              <motion.div
-                aria-hidden
-                className="pointer-events-none absolute left-[18%] right-[42%] bottom-[14%] h-[6%] rounded-full"
-                animate={{ opacity: [0.0, 0.5, 0.0, 0.4, 0.0] }}
-                transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 3.2 }}
-                style={{
-                  background:
-                    "radial-gradient(60% 100% at 50% 50%, color-mix(in oklab, var(--accent) 55%, transparent), transparent 70%)",
-                  filter: "blur(6px)",
-                  mixBlendMode: "screen",
-                }}
+                className="pointer-events-none absolute left-[42%] top-[35%] h-[2.2%] w-[16%] origin-center rounded-full bg-foreground/0"
+                animate={{ scaleY: [1, 1, 0.05, 1, 1] }}
+                transition={{ times: [0, 0.95, 0.97, 0.99, 1], duration: 5, repeat: Infinity }}
+                style={{ background: "transparent" }}
               />
             </div>
           </motion.div>
@@ -272,7 +126,7 @@ export function Hero() {
           <FloatChip className="right-[-4%] top-[6%]" delay={0.4} icon={<Brain className="h-4 w-4" />} title="Model AUC" value="0.93" />
           <FloatChip className="left-[-10%] bottom-[18%]" delay={0.8} icon={<Database className="h-4 w-4" />} title="Rows cleaned" value="1.2M" />
           <FloatChip className="right-[-6%] bottom-[10%]" delay={1.2} icon={<Sparkles className="h-4 w-4" />} title="Insights" value="Live" />
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );
