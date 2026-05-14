@@ -187,8 +187,8 @@ export function Hero() {
                       className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
                       draggable={false}
                       initial={{ opacity: 1 }}
-                      animate={{ opacity: [1, 1, 0] }}
-                      transition={{ duration: 2.2, times: [0, 0.65, 1], ease: "easeInOut" }}
+                      animate={{ opacity: [1, 1, 0.35, 0] }}
+                      transition={{ duration: 2.4, times: [0, 0.5, 0.82, 1], ease: [0.22, 1, 0.36, 1] }}
                       style={{ willChange: "opacity" }}
                     />
                   )}
