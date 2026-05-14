@@ -103,13 +103,39 @@ export function Hero() {
           {/* halo */}
           <div className="absolute inset-6 rounded-full bg-gradient-to-tr from-primary/40 via-secondary/30 to-accent/40 blur-3xl animate-glow-pulse" />
           <motion.div style={{ x: px, y: py }} className="absolute inset-0">
-            <div className="absolute inset-0 rounded-[2.5rem] glass-strong glow-ring" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.6, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 rounded-[2.5rem] glass-strong glow-ring"
+            />
             <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
               <motion.img
                 src={mascot} alt="Naaz Mulla — hijabi data analyst illustration"
                 className="absolute inset-0 h-full w-full object-cover"
-                animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 draggable={false}
+                initial={{ opacity: 0, x: -180, y: 30, scale: 0.92, filter: "blur(14px)" }}
+                animate={{
+                  opacity: [0, 1, 1, 1],
+                  x: [-180, -40, 8, 0],
+                  y: [30, 10, -2, 0],
+                  scale: [0.92, 0.97, 1.005, 1],
+                  filter: ["blur(14px)", "blur(4px)", "blur(0px)", "blur(0px)"],
+                }}
+                transition={{
+                  duration: 2.2,
+                  ease: [0.22, 1, 0.36, 1],
+                  times: [0, 0.55, 0.85, 1],
+                }}
+                style={{ willChange: "transform, opacity, filter" }}
+              />
+              {/* subtle idle breathing once settled */}
+              <motion.div
+                className="absolute inset-0"
+                initial={{ y: 0 }}
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 2.4 }}
+                style={{ pointerEvents: "none" }}
               />
               {/* eye blink overlay (subtle) */}
               <motion.div
