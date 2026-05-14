@@ -178,7 +178,7 @@ export function Hero() {
                     loading="eager"
                     decoding="async"
                   />
-                  {/* Intro-only side-pose overlay that cross-fades into the front pose */}
+                  {/* Intro-only side-pose overlay: slides in from off-screen, rotates toward viewer, cross-fades into front pose */}
                   {playIntro && (
                     <motion.img
                       src={mascotSide}
@@ -186,10 +186,16 @@ export function Hero() {
                       aria-hidden
                       className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
                       draggable={false}
-                      initial={{ opacity: 1 }}
-                      animate={{ opacity: [1, 1, 0.35, 0] }}
-                      transition={{ duration: 2.4, times: [0, 0.5, 0.82, 1], ease: [0.22, 1, 0.36, 1] }}
-                      style={{ willChange: "opacity" }}
+                      initial={{ opacity: 0, x: "-55%", scale: 1.04, rotateY: -28, filter: "blur(10px)" }}
+                      animate={{
+                        opacity: [0, 1, 1, 0.4, 0],
+                        x: ["-55%", "-12%", "0%", "0%", "0%"],
+                        scale: [1.04, 1.01, 1, 1, 1],
+                        rotateY: [-28, -10, -2, 0, 0],
+                        filter: ["blur(10px)", "blur(2px)", "blur(0px)", "blur(0px)", "blur(0px)"],
+                      }}
+                      transition={{ duration: 2.6, times: [0, 0.35, 0.6, 0.82, 1], ease: [0.22, 1, 0.36, 1] }}
+                      style={{ willChange: "opacity, transform, filter", transformPerspective: 1000, transformOrigin: "60% 50%" }}
                     />
                   )}
                 </motion.div>
