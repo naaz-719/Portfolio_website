@@ -178,6 +178,20 @@ export function Hero() {
                     loading="eager"
                     decoding="async"
                   />
+                  {/* Intro-only side-pose overlay that cross-fades into the front pose */}
+                  {playIntro && (
+                    <motion.img
+                      src={mascotSide}
+                      alt=""
+                      aria-hidden
+                      className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
+                      draggable={false}
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: [1, 1, 0] }}
+                      transition={{ duration: 2.2, times: [0, 0.65, 1], ease: "easeInOut" }}
+                      style={{ willChange: "opacity" }}
+                    />
+                  )}
                 </motion.div>
               </motion.div>
 
