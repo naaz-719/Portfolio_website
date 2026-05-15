@@ -1,41 +1,42 @@
 import { motion } from "framer-motion";
-import { SectionHeader } from "./Section";
 
 const skills = [
-  { n: "Python", c: "from-yellow-300/30 to-blue-400/30" },
-  { n: "SQL", c: "from-blue-400/30 to-cyan-400/30" },
-  { n: "Power BI", c: "from-amber-300/30 to-orange-400/30" },
-  { n: "Excel", c: "from-emerald-400/30 to-teal-400/30" },
-  { n: "Microsoft Fabric", c: "from-indigo-400/30 to-violet-400/30" },
-  { n: "Azure", c: "from-sky-400/30 to-blue-500/30" },
-  { n: "Machine Learning", c: "from-fuchsia-400/30 to-violet-400/30" },
-  { n: "Data Visualization", c: "from-pink-400/30 to-rose-400/30" },
-  { n: "Data Cleaning", c: "from-violet-400/30 to-purple-400/30" },
+  "Python", "SQL", "Power BI", "Excel",
+  "Pandas", "NumPy", "Microsoft Fabric", "Azure",
+  "Machine Learning", "Data Visualization", "Dashboard Development", "Data Cleaning",
 ];
 
 export function Skills() {
   return (
-    <section id="skills" className="relative mx-auto max-w-7xl px-4 py-28">
-      <SectionHeader eyebrow="Toolbelt" title={<>Skills that <span className="text-gradient">compound</span>.</>}
-        sub="Hover the orbs — each one is a daily driver in my analytics workflow." />
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
-        {skills.map((s, i) => (
-          <motion.div key={s.n}
-            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-            whileHover={{ rotateX: 6, rotateY: -6, y: -6 }}
-            style={{ transformPerspective: 800 }}
-            className="group relative aspect-[5/3] overflow-hidden rounded-3xl glass-strong p-6">
-            <div className={`absolute -inset-10 bg-gradient-to-br ${s.c} opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-90`} />
-            <div className="relative flex h-full flex-col justify-between">
-              <div className="h-3 w-3 rounded-full bg-foreground/80 shadow-[0_0_18px_4px] shadow-primary/60" />
-              <div>
-                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Stack</div>
-                <div className="mt-1 font-display text-2xl font-semibold">{s.n}</div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+    <section id="skills" className="relative py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="text-xs uppercase tracking-[0.4em] text-primary mb-4">Toolkit</div>
+          <h2 className="text-4xl md:text-5xl font-display font-semibold">
+            The stack behind the <span className="gradient-text">insights</span>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {skills.map((s, i) => (
+            <motion.div
+              key={s}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              whileHover={{ y: -6, rotateX: 4, rotateY: -4 }}
+              className="glass rounded-2xl p-5 text-center cursor-default group relative overflow-hidden"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ background: "radial-gradient(circle at 50% 0%, oklch(0.6 0.22 285 / 0.25), transparent 70%)" }} />
+              <div className="relative font-display font-medium">{s}</div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
