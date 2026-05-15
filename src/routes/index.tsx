@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Background } from "@/components/site/Background";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
+import { Splash } from "@/components/site/Splash";
 import { About } from "@/components/site/About";
 import { Skills } from "@/components/site/Skills";
 import { Projects } from "@/components/site/Projects";
@@ -23,8 +25,20 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [showSplash, setShowSplash] = useState(false);
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("naaz_splash_shown") === "1") return;
+      sessionStorage.setItem("naaz_splash_shown", "1");
+      setShowSplash(true);
+    } catch {
+      setShowSplash(true);
+    }
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-hidden font-sans text-foreground">
+      {showSplash && <Splash onDone={() => setShowSplash(false)} />}
       <Background />
       <Nav />
       <Hero />
