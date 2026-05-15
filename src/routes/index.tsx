@@ -25,8 +25,20 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [showSplash, setShowSplash] = useState(false);
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("naaz_splash_shown") === "1") return;
+      sessionStorage.setItem("naaz_splash_shown", "1");
+      setShowSplash(true);
+    } catch {
+      setShowSplash(true);
+    }
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-hidden font-sans text-foreground">
+      {showSplash && <Splash onDone={() => setShowSplash(false)} />}
       <Background />
       <Nav />
       <Hero />
