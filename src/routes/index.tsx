@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Background } from "@/components/site/Background";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
+import { Splash } from "@/components/site/Splash";
 import { About } from "@/components/site/About";
 import { Skills } from "@/components/site/Skills";
 import { Projects } from "@/components/site/Projects";
