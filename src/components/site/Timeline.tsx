@@ -2,16 +2,17 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "./Section";
 
 const items = [
-  { y: "2025", t: "Aspiring Data Scientist", d: "Deepening ML, MLOps and Microsoft Fabric expertise. Building production-grade pipelines." },
-  { y: "2024", t: "Freelance Data Analyst", d: "Designed dashboards and predictive models for SMEs across e-commerce and retail." },
-  { y: "2023", t: "BSc Data Science · Honors", d: "Graduated with first-class honors. Thesis on customer behavior modeling." },
-  { y: "2022", t: "Analytics Internship", d: "Power BI reporting, SQL modeling and KPI design for a regional retailer." },
+  { y: "2026", t: "MSc Data Science & AI — BITS Pilani Digital", d: "Advancing expertise in AI, machine learning, analytics, and modern data platforms." },
+  { y: "2025", t: "Analytics, BI & Industry Experience", d: "Graduated in AI & ML with Honors in Data Science while building solutions using Power BI, Microsoft Fabric, ETL, and AI-powered analytics" },
+  { y: "2024", t: "Machine Learning Projects", d: "Developed the Music Genre Classification project and strengthened practical machine learning and data science skills." },
+  { y: "2023", t: "Honors in Data Science", d: "Began the Honors in Data Science journey and deepened knowledge of Artificial Intelligence, Machine Learning, and data science concepts." },
+  { y: "2022", t: "Data Science Internship — DevTown", d: "Built a House Price Prediction project and gained hands-on experience in machine learning, predictive modeling, and AI fundamentals." }
 ];
 
 export function Timeline() {
   return (
     <section id="experience" className="relative mx-auto max-w-5xl px-4 py-28">
-      <SectionHeader eyebrow="Journey" title={<>A <span className="text-gradient">quietly relentless</span> climb.</>} />
+      <SectionHeader eyebrow="My Data" title={<> <span className="text-gradient">My Data &</span> AI Journey.</>} />
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-accent/40 to-transparent md:left-1/2" />
         <div className="space-y-10">

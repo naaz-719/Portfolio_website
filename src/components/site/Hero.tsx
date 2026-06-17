@@ -4,7 +4,11 @@ import { ArrowRight, Download, BarChart3, Database, Brain, Sparkles } from "luci
 import mascot from "@/assets/hijabi-mascot.png";
 import mascotSide from "@/assets/hijabi-side.png";
 
-const roles = ["Data Analyst", "Aspiring Data Scientist", "BI Storyteller", "AI/ML Enthusiast"];
+const roles = ["Data Analyst",
+"Power BI Developer",
+"Microsoft Fabric Practitioner",
+"Aspiring Data Engineer",
+"Aspiring Data Scientist"];
 
 function Typer() {
   const [i, setI] = useState(0);
@@ -34,8 +38,8 @@ export function Hero() {
   const [playIntro, setPlayIntro] = useState(false);
   useEffect(() => {
     try {
-      if (sessionStorage.getItem("naaz_intro_played") === "1") return;
-      sessionStorage.setItem("naaz_intro_played", "1");
+      if (sessionStorage.getItem("naaz_intro_played") === "2") return;
+      sessionStorage.setItem("naaz_intro_played", "2");
       setPlayIntro(true);
     } catch {
       setPlayIntro(true);
@@ -78,15 +82,21 @@ export function Hero() {
         </motion.p>
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
           className="mt-4 max-w-xl text-sm text-muted-foreground md:text-base lg:mx-0 mx-auto">
-          I design dashboards, build ML pipelines, and craft business intelligence that feels effortless — with a soft spot for elegant SQL and clean Python.
+          Aspiring Data Analyst with a background in AI & Machine Learning, focused on solving business problems through analytics, reporting, and intelligent data solutions.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
           className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
           <a href="#projects" className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-[1.03]">
             View Projects <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-xl glass-strong px-5 py-3 text-sm font-medium text-foreground hover:bg-white/10">
-            <Download className="h-4 w-4" /> Resume
+          <a
+            href="/Naaz Mulla CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl glass-strong px-5 py-3 text-sm font-medium text-foreground hover:bg-white/10"
+          >
+            <Download className="h-4 w-4" />
+            Resume
           </a>
           <a href="#contact" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-muted-foreground hover:text-foreground">
             Contact →
@@ -95,9 +105,9 @@ export function Hero() {
 
         <div className="mt-10 grid grid-cols-3 gap-3 lg:max-w-md">
           {[
-            { k: "12+", v: "Dashboards shipped" },
-            { k: "5", v: "ML projects" },
-            { k: "1st", v: "Class Honors" },
+            { k: "10+", v: "Analytics Dashboards" },
+            { k: "12+", v: "ML projects" },
+            { k: "MSc", v: "In Progress" },
           ].map((s) => (
             <div key={s.v} className="rounded-2xl glass p-3 text-center lg:text-left">
               <div className="text-2xl font-display font-semibold text-gradient">{s.k}</div>
@@ -245,10 +255,36 @@ export function Hero() {
           </motion.div>
 
           {/* floating chips */}
-          <FloatChip className="left-[-6%] top-[10%]" delay={0} icon={<BarChart3 className="h-4 w-4" />} title="Revenue" value="+24.6%" />
-          <FloatChip className="right-[-4%] top-[6%]" delay={0.4} icon={<Brain className="h-4 w-4" />} title="Model AUC" value="0.93" />
-          <FloatChip className="left-[-10%] bottom-[18%]" delay={0.8} icon={<Database className="h-4 w-4" />} title="Rows cleaned" value="1.2M" />
-          <FloatChip className="right-[-6%] bottom-[10%]" delay={1.2} icon={<Sparkles className="h-4 w-4" />} title="Insights" value="Live" />
+          <FloatChip
+            className="left-[-6%] top-[10%]"
+            delay={0}
+            icon={<BarChart3 className="h-4 w-4" />}
+            title="Power BI"
+          />
+
+          <FloatChip
+            className="right-[-4%] top-[6%]"
+            delay={0.4}
+            icon={<Brain className="h-4 w-4" />}
+            title="Machine Learning"
+          />
+
+          <FloatChip
+            className="left-[-10%] bottom-[18%]"
+            delay={0.8}
+            icon={<Database className="h-4 w-4" />}
+            title="Microsoft Fabric"
+            value="Lakehouse"
+          />
+
+          <FloatChip
+            className="right-[-6%] bottom-[10%]"
+            delay={1.2}
+            icon={<Sparkles className="h-4 w-4" />}
+            title="AI Copilot"
+            value="Live"
+          />
+
         </div>
       </motion.div>
     </section>

@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  "Python", "SQL", "Power BI", "Excel",
-  "Pandas", "NumPy", "Microsoft Fabric", "Azure",
-  "Machine Learning", "Data Visualization", "Dashboard Development", "Data Cleaning",
+  "Power BI", "SQL", "Python", "Excel", "Business Intelligence", 
+  "Microsoft Fabric", "Dataflow Gen2", "Lakehouse", "ETL Pipelines", "Data Warehousing",
+  "Machine Learning", "Pandas", "DAX & Data Modeling", "Azure", "AI-Powered Analytics", "Generative AI"
 ];
 
 export function Skills() {
